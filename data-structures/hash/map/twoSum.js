@@ -1,3 +1,5 @@
+// Get two indices of numbers in an array that add up to a specific target
+
 function twoSum(nums, target) {
     const map = new Map(); // stores number -> index
 
