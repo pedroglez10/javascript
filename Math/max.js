@@ -13,3 +13,7 @@ Math.max(); // -Infinity
 // Using Math.max with arrays
 const numbers = [1, 3, 2];
 Math.max(...numbers); // 3
+
+// Using reduce to find the maximum in an array
+// Providing -Infinity as the initial value ensures that the first element of the array will always be greater than or equal to the initial max, correctly starting the comparison.
+const maxInArray = numbers.reduce((max, current) => Math.max(max, current), -Infinity); // 3
