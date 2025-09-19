@@ -12,17 +12,27 @@ class LinkedList {
   }
 
   // Add a new node to the end of the list
-  add(data) {
+  addToTail(data) {
     const newNode = new Node(data);
-    if (!this.head) {
+    
+    if (this.head === null) { // if the list is empty, new node becomes the head
       this.head = newNode;
-    } else {
+    } else { // otherwise, traverse to the last node
       let current = this.head;
-      while (current.next) {
+      while (current.next !== null) {
         current = current.next;
       }
-      current.next = newNode;
+      current.next = newNode; // attach the new node at the tail
     }
+
+    this.size++;
+  }
+
+  // Add a new node to the beginning of the list
+  addToHead(data) {
+    const newNode = new Node(data);
+    newNode.next = this.head; // new node points to the current head
+    this.head = newNode; // new node becomes the new head
     this.size++;
   }
 
@@ -89,7 +99,13 @@ class LinkedList {
 }
 
 const linkedList = new LinkedList();
-linkedList.add(10);
-linkedList.add(20);
-linkedList.add(30);
+linkedList.addToTail(10);
+linkedList.addToTail(20);
+linkedList.addToTail(30);
 linkedList.printList(); // 10 -> 20 -> 30 -> null
+linkedList.addToHead(5);
+linkedList.printList(); // 5 -> 10 -> 20 -> 30 -> null
+linkedList.insertAt(15, 2);
+linkedList.printList(); // 5 -> 10 -> 15 -> 20 -> 30 -> null
+linkedList.removeAt(4);
+linkedList.printList(); // 5 -> 10 -> 15 -> 20 -> null
